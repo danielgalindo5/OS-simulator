@@ -2,6 +2,9 @@
 
 This project is a command-line-based Operating System shell simulator. It is designed to mimic the boot-up process, user authentication, and a basic command shell environment.
 
+### Team Members
+* Daniel Galindo
+
 ### Features
 * **User Authentication:** The simulator requires a valid username and password to grant access to the shell. The authentication logic is handled by the `auth.h` and `auth.obj` files.
 * **Interactive Shell:** Once authenticated, the user can interact with a command-line interface. The shell provides a welcome message and a prompt for user commands.
