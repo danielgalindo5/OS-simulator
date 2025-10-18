@@ -1,22 +1,40 @@
-# OS Simulator
+OS Simulator
 
-This project is a command-line-based Operating System shell simulator. It is designed to mimic the boot-up process, user authentication, and a basic command shell environment.
+This project is operating system simulator made in C++.
+It includes basic authentication and process management.
 
-### Team Members
-* Daniel Galindo
+HOW TO COMPILE (IMPORTANT)
 
-### Features
-* **User Authentication:** The simulator requires a valid username and password to grant access to the shell. The authentication logic is handled by the `auth.h` and `auth.obj` files.
-* **Interactive Shell:** Once authenticated, the user can interact with a command-line interface. The shell provides a welcome message and a prompt for user commands.
-* **Boot-Up Sequence:** The program includes a simulated boot-up sequence with a short delay before displaying the login prompt.
+You have to compile this project using the Developer Command Prompt for Visual Studio,
+not directly inside VS Code.
 
-### How to Use
-1.  **Run the executable:** Execute the `main.exe` file.
-2.  **Authenticate:** Enter the correct username and password at the prompt.
-3.  **Explore the shell:** Once authenticated, you will have access to the shell environment.
+1. Open the Developer Command Prompt.
+2. Go to your project folder:
+   cd "C:\Users\icalu\OneDrive\Escritorio\OS-simulator"
 
-### Files
-* `main.exe`: The executable file for the OS simulator.
-* `main.obj`: The object file for the main program logic.
-* `auth.h`: The header file containing the declaration for the authentication function.
-* `auth.obj`: The object file for the authentication implementation.
+3. Compile all the files together:
+   cl main.cpp auth.cpp Process.cpp
+
+This will create an .exe file in the same folder.
+
+HOW TO RUN
+
+After compiling, type:
+   main
+
+
+FILES
+- main.cpp       -> main program
+- auth.cpp / auth.h -> handles login
+- Process.cpp / Process.h -> process simulation
+- README.txt      -> project information
+
+NOTES
+You must use the Developer Command Prompt because it has the compiler (cl.exe)
+already configured. VS Code alone won’t compile it unless the compiler is added to PATH.
+
+
+AUTHOR
+
+Daniel Galindo
+Texas A&M International University 
