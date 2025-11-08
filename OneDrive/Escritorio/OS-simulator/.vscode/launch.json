@@ -8,13 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-<<<<<<< HEAD
       "cwd": "c:/Users/icalu/OneDrive/Escritorio/OS-simulator",
       "program": "c:/Users/icalu/OneDrive/Escritorio/OS-simulator/build/Debug/outDebug",
-=======
-      "cwd": "c:/Users/icalu/OneDrive/Escritorio/OpSimulator",
-      "program": "c:/Users/icalu/OneDrive/Escritorio/OpSimulator/build/Debug/outDebug",
->>>>>>> 9d13fff37fd8f0c0e7dc5b72725d194def3c881d
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
