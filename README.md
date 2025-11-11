@@ -16,8 +16,8 @@ This project is a command-line-based Operating System shell simulator. It is des
 3.  **Explore the shell:** Once authenticated, you will have access to the shell environment.
 
 ### CREDENTIALS FOR OS LOGIN
-Username: admin
-Password: password123
+1. Username: admin
+2. Password: password123
 
 ### Files
 * `main.exe`: The executable file for the OS simulator.
