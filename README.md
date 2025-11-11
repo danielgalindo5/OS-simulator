@@ -15,6 +15,10 @@ This project is a command-line-based Operating System shell simulator. It is des
 2.  **Authenticate:** Enter the correct username and password at the prompt.
 3.  **Explore the shell:** Once authenticated, you will have access to the shell environment.
 
+### CREDENTIALS FOR OS LOGIN
+Username: admin
+Password: password123
+
 ### Files
 * `main.exe`: The executable file for the OS simulator.
 * `main.obj`: The object file for the main program logic.
