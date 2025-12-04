@@ -1,10 +1,11 @@
-<<<<<<< HEAD
 #include <iostream>
 #include <string>
 #include <vector>
 #include "auth.h"
 #include "Process.h"
 #include "Scheduler.h"
+#include "VirtualMemory.h"
+
 using namespace std;
 
 int main() {
@@ -17,6 +18,9 @@ int main() {
         return 1;
     }
 
+    // =======================
+    // 1. SIMPLE PROCESS SIM
+    // =======================
     cout << "\n=== Process Simulation ===\n";
 
     Process p1(1, 0, 4);
@@ -38,6 +42,9 @@ int main() {
 
     cout << "p1 finished!\n";
 
+    // ==========================
+    // 2. CPU SCHEDULING SIM
+    // ==========================
     cout << "\n=== CPU Scheduling Simulation ===\n";
 
     vector<SchedProcess> schedProcs = {
@@ -73,24 +80,60 @@ int main() {
 
     displayResults(schedProcs);
 
-    return 0;
-}
-=======
-using namespace std;
-#include <iostream>;
-#include <string>;
-#include "auth.h"
-int main(){
-    cout << "[OS] // Booting up this make take a few seconds...\n";
+    // ==========================
+    // 3. VIRTUAL MEMORY SIM
+    // ==========================
+    cout << "\n=== Virtual Memory Simulation ===\n";
 
-    if (authenticateuser())
-    {
-        cout << "[OS] // Access granted. Welcome to the OS shell \n\n" << endl;
-    } else {
-        cout << "Access Denied.\n" << "----------------------\n" << "Shutting down.\n" << endl;
-        return 1;
+    VirtualMemory vm;
+
+    cout << "We simulate paged memory with:\n";
+    cout << "  Pages      : " << VirtualMemory::NUM_PAGES << "\n";
+    cout << "  Frames     : " << VirtualMemory::FRAME_COUNT << "\n";
+    cout << "  Page size  : " << VirtualMemory::PAGE_SIZE << " bytes\n\n";
+
+    int logicalAddress;
+    while (true) {
+        cout << "Enter a logical address between 0 and "
+             << (VirtualMemory::NUM_PAGES * VirtualMemory::PAGE_SIZE - 1)
+             << " (-1 to stop): ";
+        cin >> logicalAddress;
+
+        if (!cin) {
+            cout << "Input error, exiting virtual memory demo.\n";
+            break;
+        }
+
+        if (logicalAddress < 0) {
+            break;
+        }
+
+        if (logicalAddress >= VirtualMemory::NUM_PAGES * VirtualMemory::PAGE_SIZE) {
+            cout << "Out of range logical address.\n";
+            continue;
+        }
+
+        bool fault = false;
+        // Read current value
+        unsigned char value = vm.readByte(static_cast<uint16_t>(logicalAddress), fault);
+
+        cout << "Read from logical address " << logicalAddress
+             << " -> value = " << static_cast<int>(value)
+             << (fault ? "  [PAGE FAULT]\n" : "  [HIT]\n");
+
+        // Now write something (for example, low 8 bits of address)
+        bool fault2 = false;
+        unsigned char newValue = static_cast<unsigned char>(logicalAddress % 256);
+        vm.writeByte(static_cast<uint16_t>(logicalAddress), newValue, fault2);
+
+        cout << "Wrote value " << static_cast<int>(newValue)
+             << " to that same logical address"
+             << (fault2 ? "  [PAGE FAULT ON WRITE]\n" : "  [NO FAULT ON WRITE]\n");
     }
-    return 0;
 
+    vm.printStats();
+
+    cout << "\n[OS] // Shutting down.\n";
+return 0;
 }
->>>>>>> 9d13fff37fd8f0c0e7dc5b72725d194def3c881d
+
